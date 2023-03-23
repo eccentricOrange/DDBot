@@ -28,9 +28,9 @@ class DDBot {
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     DDBot();  // allow the user to directly set the arrays
-    DDBot(uint8_t directionPins[4]);
-    DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]);
-    DDBot(uint8_t directionPins[4], uint8_t PWMPin);
+    DDBot(const uint8_t directionPins[4]);
+    DDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]);
+    DDBot(const uint8_t directionPins[4], const uint8_t PWMPin);
 
     void setPinModes();
 
@@ -117,9 +117,9 @@ class ForwardDDBot : public DDBot {
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     ForwardDDBot();  // allow the user to directly set the arrays or the default PWM values
-    ForwardDDBot(uint8_t maxPwm, float adjustment);
+    ForwardDDBot(const uint8_t maxPwm, const float adjustment);
     ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]);
-    ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2], uint8_t maxPwm, float adjustment);
+    ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2], const uint8_t maxPwm, const float adjustment);
 
     void init();
 
