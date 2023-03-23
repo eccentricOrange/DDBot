@@ -153,7 +153,7 @@ ForwardDDBot::ForwardDDBot(uint8_t maxPwm, float adjustment) {
     this->adjustment = adjustment;
 }
 
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
+ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
@@ -161,7 +161,7 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
         this->PWMPins[i] = PWMPins[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPwm, float adjustment) {
+ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2], uint8_t maxPwm, float adjustment) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }

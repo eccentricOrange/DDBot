@@ -68,8 +68,8 @@ class ForwardDDBot: public DDBot {
 
     ForwardDDBot();
     ForwardDDBot(uint8_t maxPwm, float adjustment);
-    ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]);
-    ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPwm, float adjustment);
+    ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]);
+    ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2], uint8_t maxPwm, float adjustment);
 
     void init();
 
