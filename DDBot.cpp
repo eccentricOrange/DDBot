@@ -71,6 +71,10 @@ void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForwa
     setSpeed(leftSpeed, rightSpeed);
 }
 
+// the follwing methods set the direction of the robot by controling which
+// direction motors are going to turn and in which direction
+// you can figure out these methods by trying to imagine the robot, maybe
+// using a model or a drawing
 void DDBot::forward() {
     writeDirections(HIGH, LOW, HIGH, LOW);
 }
@@ -148,6 +152,7 @@ void DDBot::stop() {
 }
 
 ForwardDDBot::ForwardDDBot() {}
+
 ForwardDDBot::ForwardDDBot(uint8_t maxPwm, float adjustment) {
     this->maxPwm = maxPwm;
     this->adjustment = adjustment;
@@ -175,10 +180,19 @@ ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins
 
 void ForwardDDBot::init() {
     setPinModes();
+
+    // this is the value used to "slow down" a motor
+    // it is used when we want to turn, but don't want to set the speed of the other motor to 0
     _adjustedPwm = this->maxPwm * this->adjustment;
+
+    // set the robot to perpetually move forward
     forward(leftActualPwm, rightActualPwm);
 }
 
+// the follwing methods set the direction of the robot by controling which
+// motor spins faster and which one slower
+// the logic here is the same as in the conventional differential drive robot
+// and you can figure it out the same way
 void ForwardDDBot::left() {
     leftTargetPwm = _adjustedPwm;
     rightTargetPwm = maxPwm;
@@ -200,12 +214,13 @@ void ForwardDDBot::stop() {
 }
 
 void ForwardDDBot::write() {
-    // Update "actual" PWM values so that they get closer to the "target" values. This will
-    // eventually get the values to equal, as exponential decay (but with integer division).
+    // ppdate "actual" PWM values so that they get closer to the "target" values
+    // this will eventually get the values to equal, as exponential decay (but
+    // with integer division)
     leftActualPwm = (leftTargetPwm + leftActualPwm) / 2;
     rightActualPwm = (rightTargetPwm + rightActualPwm) / 2;
 
-    // Write the actual PWM values to the motor driver
+    // write the actual PWM values to the motor driver
     analogWrite(PWMPins[0], leftActualPwm);
     analogWrite(PWMPins[1], rightActualPwm);
 }
