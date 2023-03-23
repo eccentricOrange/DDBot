@@ -1,19 +1,19 @@
 #include <Arduino.h>
 
-#include <array>
-
 #ifndef DDBot_h
 #define DDBot_h
 
 class DDBot {
    private:
    public:
-    std::array<uint8_t, 4> _directionPins;
-    std::array<uint8_t, 4> _PWMPins;
+    uint8_t directionPins[4];
+    uint8_t PWMPins[2];
+    uint8_t PWMPin;
 
     DDBot();
-    DDBot(std::array<uint8_t, 4> directionPins);
-    DDBot(std::array<uint8_t, 4> directionPins, std::array<uint8_t, 2> PWMPins);
+    DDBot(uint8_t directionPins[4]);
+    DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]);
+    DDBot(uint8_t directionPins[4], uint8_t PWMPin);
 
     void setPinModes();
 
@@ -51,6 +51,36 @@ class DDBot {
     void stop();
 
     ~DDBot();
+};
+
+class ForwardDDBot: public DDBot {
+   private:
+    float _adjustedPwm;
+
+    uint8_t leftActualPwm = 255,
+            leftTargetPwm = 255,
+            rightActualPwm = 255,
+            rightTargetPwm = 255;
+
+   public:
+    uint8_t maxPwm;    // Maximum "speed" for each motor
+    float adjustment;  // Scaling factor used when slowing down a given motor.
+
+    ForwardDDBot();
+    ForwardDDBot(uint8_t maxPwm, float adjustment);
+    ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]);
+    ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPwm, float adjustment);
+
+    void init();
+
+    void left();
+    void centre();
+    void right();
+    void stop();
+
+    void write();
+
+    ~ForwardDDBot();
 };
 
 #endif  // DDBot_h
