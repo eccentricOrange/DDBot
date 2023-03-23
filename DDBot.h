@@ -23,8 +23,8 @@ class DDBot {
     // when each motor has a dedicated PWM pin, it's possible to control the speed of each motor independently
     // in other cases, the speed of each motor is controlled by the same PWM pin
     // two declarations exist to accommodate both cases, and this pattern is used throughout the library
-    uint8_t PWMPins[2];
-    uint8_t PWMPin;
+    uint8_t PWMPins[2] = {0, 0};
+    uint8_t PWMPin = 0;
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     DDBot();  // allow the user to directly set the arrays

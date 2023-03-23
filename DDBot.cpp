@@ -33,8 +33,16 @@ void DDBot::setPinModes() {
     for (size_t i = 0; i < 4; i++) {
         pinMode(directionPins[i], OUTPUT);
     }
-    for (size_t i = 0; i < 2; i++) {
-        pinMode(PWMPins[i], OUTPUT);
+
+    // do not set pinMode(s) for PWM pin(s) if they are not set (i.e. if they are 0)
+    if (PWMPins[0] != 0 && PWMPins[1] != 0) {
+        for (size_t i = 0; i < 2; i++) {
+            pinMode(PWMPins[i], OUTPUT);
+        }
+    }
+
+    if (PWMPin != 0) {
+        pinMode(PWMPin, OUTPUT);
     }
 }
 
