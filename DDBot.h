@@ -100,7 +100,7 @@ class ForwardDDBot : public DDBot {
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
     // this will be calculated in the init() method by multiplying the maxPwm by the adjustment factor
-    float _adjustedPwm;
+    uint8_t _adjustedPwm;
 
     // "actual" values are written to a motor during a given call of the write() method
     // "target" values are the values that the user wants to write to a motor

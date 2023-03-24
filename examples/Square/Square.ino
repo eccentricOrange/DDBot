@@ -16,8 +16,8 @@
 #include <DDBot.h>
 
 // define the pins used by the motors
-static const uint8_t directionPins[4] = {2, 3, 4, 5};
-static const uint8_t speedPins[2] = {10, 11};
+uint8_t directionPins[4] = {2, 3, 4, 5};
+uint8_t speedPins[2] = {10, 11};
 
 // create an instance of the DDBot class
 // this allows you to potentially control multiple robots at once using multiple instances
