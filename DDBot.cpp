@@ -7,13 +7,13 @@
 
 DDBot::DDBot() {}
 
-DDBot::DDBot(const uint8_t directionPins[4]) {
+DDBot::DDBot(uint8_t directionPins[4]) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
 }
 
-DDBot::DDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]) {
+DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
@@ -22,7 +22,7 @@ DDBot::DDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]) {
     }
 }
 
-DDBot::DDBot(const uint8_t directionPins[4], const uint8_t PWMPin) {
+DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPin) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
@@ -168,12 +168,12 @@ void DDBot::stop() {
 
 ForwardDDBot::ForwardDDBot() {}
 
-ForwardDDBot::ForwardDDBot(const uint8_t maxPwm, const float adjustment) {
+ForwardDDBot::ForwardDDBot(uint8_t maxPwm, float adjustment) {
     this->maxPwm = maxPwm;
     this->adjustment = adjustment;
 }
 
-ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2]) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
@@ -181,7 +181,7 @@ ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins
         this->PWMPins[i] = PWMPins[i];
     }
 }
-ForwardDDBot::ForwardDDBot(const uint8_t directionPins[4], const uint8_t PWMPins[2], const uint8_t maxPwm, const float adjustment) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPwm, float adjustment) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
