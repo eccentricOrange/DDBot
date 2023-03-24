@@ -2,9 +2,9 @@
 
 This library provides an interface to easily control a [differential wheeled robot](https://en.wikipedia.org/wiki/Differential_wheeled_robot) using an Arduino-compatible microcontroller.
 
-The expectation is that you have an even number of motors, with one of each pair on either side of a structure that looks like a rover or a car. You then control the direction the robot moves in by controlling which motors turn on and in which direction.
+The expectation is that you have an even number of motors, with one half on either side of a structure that looks like a rover or a car. You then control the direction the robot moves in by controlling which motors turn on and in which direction. For example, if the left motors spin forward and the right motors spin backwards, the robot will rotate clockwise.
 
-For example, if the left motors spin forward and the right motors spin backwards, the robot will rotate clockwise.
+Check out [line-follower-std](https://github.com/eccentricOrange/line-follower-std) and [line-follower-smooth](https://github.com/eccentricOrange/line-follower-smooth) for two examples where this library is used in a project.
 
 ## Overview of the library
 In general, using this library involves the following steps. Don't worry if you don't understand the specific methods yet, we'll look at them in more detail later.
