@@ -52,7 +52,10 @@ void setup() {
         bot.adjustment += 0.05;
         bot.calculateAdjustedPWM();
 
-        Serial.printf("[Forward] Adjustment: %f, Adjusted PWM: %d\n", bot.adjustment, bot.maxPWM * bot.adjustment);
+        Serial.print("[Forward] Adjustment: ");
+        Serial.print(bot.adjustment);
+        Serial.print(", Adjusted PWM: ");
+        Serial.println(bot.maxPWM * bot.adjustment);
 
         // we need to update the PWM values to allow the feedback loop to work
         // we do this by calling the write() method 300 times, with a 10 ms delay between each call,
@@ -77,7 +80,10 @@ void setup() {
         bot.adjustment += 0.05;
         bot.calculateAdjustedPWM();
 
-        Serial.printf("[Backward] Adjustment: %f, Adjusted PWM: %d\n", bot.adjustment, bot.maxPWM * bot.adjustment);
+        Serial.print("[Backward] Adjustment: ");
+        Serial.print(bot.adjustment);
+        Serial.print(", Adjusted PWM: ");
+        Serial.println(bot.maxPWM * bot.adjustment);
 
         // again, we need to update the PWM values to allow the feedback loop to work
         // so 300 iterations * 10 ms per iteration = 3 seconds
