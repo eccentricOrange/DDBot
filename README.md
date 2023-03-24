@@ -65,7 +65,7 @@ There are classes for two kinds of robots included in this library.
 
         **This is a compulsory argument and you must specify this before setting the pin modes or using the direction/speed methods.**
 
-    *  **`pwmPins[2]`**
+    *  **`PWMPins[2]`**
         
         This sets the pins for the speed of the motors. The first pin is for the left motors, and the second is for the right motors. These pins must be PWM pins (i.e. pins 3, 5, 6, 9, 10, or 11 on an Arduino Uno). You can check the [Arduino Reference for `analogWrite()`](https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/) to see which pins are PWM pins on your board.
 
@@ -75,9 +75,9 @@ There are classes for two kinds of robots included in this library.
 
     ```cpp
     uint8_t directionPins[4] = {2, 3, 4, 5};
-    uint8_t pwmPins[2] = {10, 11};
+    uint8_t speedPins[2] = {10, 11};
 
-    DDBot bot(directionPins, pwmPins);
+    DDBot bot(directionPins, speedPins);
     ```
 
     You can also set the pin arrays after creating the instance. For example, if you want to use pins 2, 3, 4, and 5 for the direction pins, and pins 10 and 11 for the speed pins, you can do the following:
@@ -86,14 +86,14 @@ There are classes for two kinds of robots included in this library.
     DDBot bot();
 
     uint8_t directionPins[4] = {2, 3, 4, 5};
-    uint8_t pwmPins[2] = {10, 11};
+    uint8_t speedPins[2] = {10, 11};
 
     for (int i = 0; i < 4; i++) {
         bot.directionPins[i] = directionPins[i];
     }
 
     for (int i = 0; i < 2; i++) {
-        bot.pwmPins[i] = pwmPins[i];
+        bot.PWMPins[i] = speedPins[i];
     }
     ```
 
@@ -165,7 +165,7 @@ So, when you call a direction method, it just sets two variables internally. You
 
     Just like the `DDBot` class, you can pass in the direction and speed pins to the constructor. However, the `ForwardDDBot` class has a two additional arguments.
     
-    **These additional arguments and the `pwmPins` argument are both compulsory.**
+    **These additional arguments and the `PWMPins` argument are both compulsory.**
 
     *  **maxPWM**
         
@@ -179,10 +179,12 @@ So, when you call a direction method, it just sets two variables internally. You
 
     ```cpp
     uint8_t directionPins[4] = {2, 3, 4, 5};
-    uint8_t pwmPins[2] = {10, 11};
+    uint8_t speedPins[2] = {10, 11};
 
-    ForwardDDBot bot(directionPins, pwmPins, 255, 0.5);
+    ForwardDDBot bot(directionPins, speedPins, 255, 0.5);
     ```
+
+    **You should always call the `calculateAdjustedPWM()` method after you set the `adjustment` or `maxPWM` values, after calling the `init()` method.**
 
 2.  Now that you've created an instance of the `ForwardDDBot` class, you can set the pin modes and the initial speed and direction. This is done by calling the `init()` method. This method takes no arguments and returns nothing.
 

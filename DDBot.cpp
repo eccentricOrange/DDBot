@@ -6,6 +6,7 @@
 #define DDBot_cpp
 
 DDBot::DDBot() {}
+DDBot::~DDBot() {}
 
 DDBot::DDBot(uint8_t directionPins[4]) {
     for (size_t i = 0; i < 4; i++) {
@@ -86,7 +87,7 @@ void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForwa
     setSpeed(leftSpeed, rightSpeed);
 }
 
-// the follwing methods set the direction of the robot by controling which
+// the following methods set the direction of the robot by controlling which
 // direction motors are going to turn and in which direction
 // you can figure out these methods by trying to imagine the robot, maybe
 // using a model or a drawing
@@ -167,9 +168,10 @@ void DDBot::stop() {
 }
 
 ForwardDDBot::ForwardDDBot() {}
+ForwardDDBot::~ForwardDDBot() {}
 
-ForwardDDBot::ForwardDDBot(uint8_t maxPwm, float adjustment) {
-    this->maxPwm = maxPwm;
+ForwardDDBot::ForwardDDBot(uint8_t maxPWM, float adjustment) {
+    this->maxPWM = maxPWM;
     this->adjustment = adjustment;
 }
 
@@ -181,7 +183,7 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
         this->PWMPins[i] = PWMPins[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPwm, float adjustment) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPWM, float adjustment) {
     for (size_t i = 0; i < 4; i++) {
         this->directionPins[i] = directionPins[i];
     }
@@ -189,55 +191,61 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t
         this->PWMPins[i] = PWMPins[i];
     }
 
-    this->maxPwm = maxPwm;
+    this->maxPWM = maxPWM;
     this->adjustment = adjustment;
+}
+
+void ForwardDDBot::calculateAdjustedPWM() {
+    // this is the value used to "slow down" a motor
+    // it is used when we want to turn, but don't want to set the speed of the other motor to 0
+    _adjustedPWM = this->maxPWM * this->adjustment;
 }
 
 void ForwardDDBot::init() {
     setPinModes();
+    calculateAdjustedPWM();
 
-    // this is the value used to "slow down" a motor
-    // it is used when we want to turn, but don't want to set the speed of the other motor to 0
-    _adjustedPwm = this->maxPwm * this->adjustment;
+    this->leftActualPWM = maxPWM;
+    this->rightActualPWM = maxPWM;
 
     // set the robot to perpetually move forward
-    forward(leftActualPwm, rightActualPwm);
+    forward(leftActualPWM, rightActualPWM);
 }
 
-// the follwing methods set the direction of the robot by controling which
+// the following methods set the direction of the robot by controlling which
 // motor spins faster and which one slower
 // the logic here is the same as in the conventional differential drive robot
 // and you can figure it out the same way
 void ForwardDDBot::left() {
-    leftTargetPwm = _adjustedPwm;
-    rightTargetPwm = maxPwm;
+    leftTargetPWM = _adjustedPWM;
+    rightTargetPWM = maxPWM;
 }
 
 void ForwardDDBot::right() {
-    leftTargetPwm = maxPwm;
-    rightTargetPwm = _adjustedPwm;
+    leftTargetPWM = maxPWM;
+    rightTargetPWM = _adjustedPWM;
 }
 
-void ForwardDDBot::right() {
-    leftTargetPwm = maxPwm;
-    rightTargetPwm = maxPwm;
+void ForwardDDBot::centre() {
+    leftTargetPWM = maxPWM;
+    rightTargetPWM = maxPWM;
 }
 
 void ForwardDDBot::stop() {
-    leftTargetPwm = 0;
-    rightTargetPwm = 0;
+    leftTargetPWM = 0;
+    rightTargetPWM = 0;
 }
 
 void ForwardDDBot::write() {
-    // ppdate "actual" PWM values so that they get closer to the "target" values
+    // update "actual" PWM values so that they get closer to the "target" values
     // this will eventually get the values to equal, as exponential decay (but
     // with integer division)
-    leftActualPwm = (leftTargetPwm + leftActualPwm) / 2;
-    rightActualPwm = (rightTargetPwm + rightActualPwm) / 2;
+    leftActualPWM = (leftTargetPWM + leftActualPWM) / 2;
+    rightActualPWM = (rightTargetPWM + rightActualPWM) / 2;
 
     // write the actual PWM values to the motor driver
-    analogWrite(PWMPins[0], leftActualPwm);
-    analogWrite(PWMPins[1], rightActualPwm);
+    analogWrite(PWMPins[0], leftActualPWM);
+    analogWrite(PWMPins[1], rightActualPWM);
 }
 
 #endif  // DDBot_cpp
