@@ -34,7 +34,7 @@ In general, using this library involves the following steps. Don't worry if you 
     bot.forward();
     delay(2000);
 
-    bot.forward(255);
+    bot.forward(100);
     delay(1000);
 
 
@@ -115,7 +115,7 @@ There are classes for two kinds of robots included in this library.
 
     *   **`setSpeed()`**
         
-        This method sets the speed of the motors. The speeds are specified as integers between 0 and 255, where 0 is stopped and 255 is full speed (this follows from how the `analogWrite()` function works).
+        This method sets the speed of the motors. The speeds are specified as integers between 0 and 100, where 0 is stopped and 100 is full speed.
 
         If you pass in only one argument, it will set the speed of both motors to that value. If you pass in two arguments, it will set the speed of the left motors to the first argument, and the speed of the right motors to the second argument.
 
@@ -169,7 +169,7 @@ So, when you call a direction method, it just sets two variables internally. You
 
     *  **maxPWM**
         
-        This sets the maximum PWM value that will be written to the motors. This is useful if you want to limit the maximum speed of the robot. This value must be between 0 and 255, following from how the `analogWrite()` function works.
+        This sets the maximum PWM value that will be written to the motors. This is useful if you want to limit the maximum speed of the robot. This value must be between 0 and 100.
 
     *   **adjustment**
 
@@ -181,7 +181,7 @@ So, when you call a direction method, it just sets two variables internally. You
     uint8_t directionPins[4] = {2, 3, 4, 5};
     uint8_t speedPins[2] = {10, 11};
 
-    ForwardDDBot bot(directionPins, speedPins, 255, 0.5);
+    ForwardDDBot bot(directionPins, speedPins, 100, 0.5);
     ```
 
     **You should always call the `calculateAdjustedPWM()` method after you set the `adjustment` or `maxPWM` values, after calling the `init()` method.**

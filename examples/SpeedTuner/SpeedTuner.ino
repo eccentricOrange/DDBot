@@ -34,7 +34,7 @@ ForwardDDBot bot(directionPins, speedPins);
 
 void setup() {
     // use the maximum possible PWM value
-    bot.maxPWM = 255;
+    bot.maxPWM = 100;
 
     // set the pin modes for the motor DIO pins
     bot.init();

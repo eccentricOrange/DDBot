@@ -30,10 +30,10 @@ void setup() {
 
 void loop() {
     // move forward with full speed for 2 seconds
-    bot.forward(255);
+    bot.forward(100);
     delay(2000);
 
     // turn right with full speed for 1 second
-    bot.right(255);
+    bot.right(100);
     delay(1000);
 }
