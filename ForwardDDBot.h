@@ -37,7 +37,8 @@ class ForwardDDBot : public DDBot {
     // "actual" values are written to a motor during a given call of the write() method
     // "target" values are the values that the user wants to write to a motor
     // in each call of the write() method, the actual values are adjusted to come closer to the target values
-    uint8_t leftActualPWM, leftTargetPWM, rightActualPWM, rightTargetPWM;
+    uint8_t rightTargetPWM, leftTargetPWM;
+    uint16_t rightActualPWM, leftActualPWM;  // 16-bit to avoid overflow in the `write()` method
 
    public:
     uint8_t maxPWM;    // maximum "speed" for each motor
