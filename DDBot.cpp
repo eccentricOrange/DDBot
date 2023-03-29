@@ -244,3 +244,4 @@ void ForwardDDBot::write() {
     analogWrite(PWMPins[0], leftActualPWM);
     analogWrite(PWMPins[1], rightActualPWM);
 }
+#endif  // DDBot_cpp
