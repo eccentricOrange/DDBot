@@ -157,7 +157,7 @@ There are classes for two kinds of robots included in this library.
         It does not affect the PWM output pins, so if you have specified the speed pins, the motors will resume spinning at the last speed you set.
 
 ## Forward Differential Drive Robot
-One of the key concepts behind this type of robot is that it relies on closed-loop control. If you specify a change in speed or direction, it will not be set immediately. Instead, it will be set gradually over time. This is done to prevent the robot from jerking around.
+One of the key concepts behind this type of robot is that it relies on open-loop control. If you specify a change in speed or direction, it will not be set immediately. Instead, it will be set gradually over time. This is done to prevent the robot from jerking around.
 
 So, when you call a direction method, it just sets two variables internally. You must then call another method in each iteration of your `loop()` function to update the actual values being written to the robot.
 
@@ -200,7 +200,7 @@ So, when you call a direction method, it just sets two variables internally. You
 
 3.  Now you're all set! You can now call the direction and speed methods in a continuous loop.
 
-    Though this inherits all the methods from the `DDBot` class, only four implement closed-loop control. These are `left()`, `right()`, `centre()`, and `stop()`. They don't take any argument.
+    Though this inherits all the methods from the `DDBot` class, only four implement open-loop control. These are `left()`, `right()`, `centre()`, and `stop()`. They don't take any argument.
 
     Remember that you must call the `write()` method in each iteration of your `loop()` function to update the actual values being written to the robot.
 
