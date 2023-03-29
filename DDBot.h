@@ -17,6 +17,9 @@ class DDBot {
     static const uint8_t NUMBER_OF_DIRECTION_PINS = 4;
     static const uint8_t NUMBER_OF_PWM_PINS = 2;
 
+    // factor used to scale the speed of the motors from 0-100 to 0-255
+    static const float speedFactor = 2.55;
+
     // the sequence of pins is important, and is used throughout the library
     // the first two pins are for the left motor, and the second two are for the right motor
     // the first pin in each pair is for the forward direction, and the second is for the backward direction
@@ -36,6 +39,7 @@ class DDBot {
 
     void setPinModes();
 
+    uint8_t scaleSpeed(uint8_t speed);
     void setSpeed(uint8_t speed);
     void setSpeed(uint8_t leftSpeed, uint8_t rightSpeed);
 
