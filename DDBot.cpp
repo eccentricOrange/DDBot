@@ -8,26 +8,26 @@
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
 
-DDBot::DDBot(uint8_t directionPins[4]) {
+DDBot::DDBot(uint8_t directionPinsIn[4]) {
     for (size_t i = 0; i < 4; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
+DDBot::DDBot(uint8_t directionPinsIn[4], uint8_t PWMPinsIn[2]) {
     for (size_t i = 0; i < 4; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < 2; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPin) {
+DDBot::DDBot(uint8_t directionPinsIn[4], uint8_t PWMPinIn) {
     for (size_t i = 0; i < 4; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
-    this->PWMPin = PWMPin;
+    PWMPin = PWMPinIn;
 }
 
 void DDBot::setPinModes() {
@@ -170,43 +170,43 @@ void DDBot::stop() {
 ForwardDDBot::ForwardDDBot() {}
 ForwardDDBot::~ForwardDDBot() {}
 
-ForwardDDBot::ForwardDDBot(uint8_t maxPWM, float adjustment) {
-    this->maxPWM = maxPWM;
-    this->adjustment = adjustment;
+ForwardDDBot::ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn) {
+    maxPWM = maxPWMIn;
+    adjustment = adjustmentIn;
 }
 
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[4], uint8_t PWMPinsIn[2]) {
     for (size_t i = 0; i < 4; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < 2; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPWM, float adjustment) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[4], uint8_t PWMPinsIn[2], uint8_t maxPWMIn, float adjustmentIn) {
     for (size_t i = 0; i < 4; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < 2; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 
-    this->maxPWM = maxPWM;
-    this->adjustment = adjustment;
+    maxPWM = maxPWMIn;
+    adjustment = adjustmentIn;
 }
 
 void ForwardDDBot::calculateAdjustedPWM() {
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
-    _adjustedPWM = this->maxPWM * this->adjustment;
+    _adjustedPWM = maxPWM * adjustment;
 }
 
 void ForwardDDBot::init() {
     setPinModes();
     calculateAdjustedPWM();
 
-    this->leftActualPWM = maxPWM;
-    this->rightActualPWM = maxPWM;
+    leftActualPWM = maxPWM;
+    rightActualPWM = maxPWM;
 
     // set the robot to perpetually move forward
     forward(leftActualPWM, rightActualPWM);
