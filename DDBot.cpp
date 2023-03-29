@@ -8,36 +8,36 @@
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
 
-DDBot::DDBot(uint8_t directionPins[4]) {
-    for (size_t i = 0; i < 4; i++) {
+DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS]) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         this->directionPins[i] = directionPins[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
-    for (size_t i = 0; i < 4; i++) {
+DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         this->directionPins[i] = directionPins[i];
     }
-    for (size_t i = 0; i < 2; i++) {
+    for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
         this->PWMPins[i] = PWMPins[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[4], uint8_t PWMPin) {
-    for (size_t i = 0; i < 4; i++) {
+DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPin) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         this->directionPins[i] = directionPins[i];
     }
     this->PWMPin = PWMPin;
 }
 
 void DDBot::setPinModes() {
-    for (size_t i = 0; i < 4; i++) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         pinMode(directionPins[i], OUTPUT);
     }
 
     // do not set pinMode(s) for PWM pin(s) if they are not set (i.e. if they are 0)
     if (PWMPins[0] != 0 && PWMPins[1] != 0) {
-        for (size_t i = 0; i < 2; i++) {
+        for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
             pinMode(PWMPins[i], OUTPUT);
         }
     }
@@ -175,19 +175,19 @@ ForwardDDBot::ForwardDDBot(uint8_t maxPWM, float adjustment) {
     this->adjustment = adjustment;
 }
 
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2]) {
-    for (size_t i = 0; i < 4; i++) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         this->directionPins[i] = directionPins[i];
     }
-    for (size_t i = 0; i < 2; i++) {
+    for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
         this->PWMPins[i] = PWMPins[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[4], uint8_t PWMPins[2], uint8_t maxPWM, float adjustment) {
-    for (size_t i = 0; i < 4; i++) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS], uint8_t maxPWM, float adjustment) {
+    for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         this->directionPins[i] = directionPins[i];
     }
-    for (size_t i = 0; i < 2; i++) {
+    for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
         this->PWMPins[i] = PWMPins[i];
     }
 
