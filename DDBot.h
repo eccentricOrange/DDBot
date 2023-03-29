@@ -14,23 +14,25 @@
 class DDBot {
    private:
    public:
+    static const uint8_t NUMBER_OF_DIRECTION_PINS = 4;
+    static const uint8_t NUMBER_OF_PWM_PINS = 2;
 
     // the sequence of pins is important, and is used throughout the library
     // the first two pins are for the left motor, and the second two are for the right motor
     // the first pin in each pair is for the forward direction, and the second is for the backward direction
-    uint8_t directionPins[4];
+    uint8_t directionPins[NUMBER_OF_DIRECTION_PINS];
 
     // when each motor has a dedicated PWM pin, it's possible to control the speed of each motor independently
     // in other cases, the speed of each motor is controlled by the same PWM pin
     // two declarations exist to accommodate both cases, and this pattern is used throughout the library
-    uint8_t PWMPins[2] = {0, 0};
+    uint8_t PWMPins[NUMBER_OF_PWM_PINS] = {0, 0};
     uint8_t PWMPin = 0;
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     DDBot();  // allow the user to directly set the arrays
-    DDBot(uint8_t directionPins[4]);
-    DDBot(uint8_t directionPins[4], uint8_t PWMPins[2]);
-    DDBot(uint8_t directionPins[4], uint8_t PWMPin);
+    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS]);
+    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]);
+    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPin);
 
     void setPinModes();
 
