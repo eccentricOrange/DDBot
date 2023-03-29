@@ -4,26 +4,26 @@
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
 
-DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS]) {
+DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS]) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]) {
+DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 }
 
-DDBot::DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPin) {
+DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
-    this->PWMPin = PWMPin;
+    PWMPin = PWMPinIn;
 }
 
 void DDBot::setPinModes() {
