@@ -1,9 +1,5 @@
 #include "DDBot.h"
-
 #include <Arduino.h>
-
-#ifndef DDBot_cpp
-#define DDBot_cpp
 
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
@@ -166,5 +162,3 @@ void DDBot::counterClockwise(uint8_t leftSpeed, uint8_t rightSpeed) {
 void DDBot::stop() {
     writeDirections(LOW, LOW, LOW, LOW);
 }
-
-#endif  // DDBot_cpp
