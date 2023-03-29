@@ -22,7 +22,7 @@
 */
 
 #include <Arduino.h>
-#include <DDBot.h>
+#include <ForwardDDBot.h>
 
 // define the pins used by the motors
 uint8_t directionPins[4] = {2, 3, 4, 5};
