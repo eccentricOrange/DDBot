@@ -4,43 +4,43 @@
 ForwardDDBot::ForwardDDBot() {}
 ForwardDDBot::~ForwardDDBot() {}
 
-ForwardDDBot::ForwardDDBot(uint8_t maxPWM, float adjustment) {
-    this->maxPWM = maxPWM;
-    this->adjustment = adjustment;
+ForwardDDBot::ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn) {
+    maxPWM = maxPWMIn;
+    adjustment = adjustmentIn;
 }
 
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS], uint8_t maxPWM, float adjustment) {
+ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS], uint8_t maxPWMIn, float adjustmentIn) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
-        this->directionPins[i] = directionPins[i];
+        directionPins[i] = directionPinsIn[i];
     }
     for (size_t i = 0; i < NUMBER_OF_PWM_PINS; i++) {
-        this->PWMPins[i] = PWMPins[i];
+        PWMPins[i] = PWMPinsIn[i];
     }
 
-    this->maxPWM = maxPWM;
-    this->adjustment = adjustment;
+    maxPWM = maxPWMIn;
+    adjustment = adjustmentIn;
 }
 
 void ForwardDDBot::calculateAdjustedPWM() {
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
-    _adjustedPWM = this->maxPWM * this->adjustment;
+    _adjustedPWM = maxPWM * adjustment;
 }
 
 void ForwardDDBot::init() {
     setPinModes();
     calculateAdjustedPWM();
 
-    this->leftActualPWM = maxPWM;
-    this->rightActualPWM = maxPWM;
+    leftActualPWM = maxPWM;
+    rightActualPWM = maxPWM;
 
     // set the robot to perpetually move forward
     forward(leftActualPWM, rightActualPWM);

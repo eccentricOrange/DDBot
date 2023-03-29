@@ -47,9 +47,9 @@ class ForwardDDBot : public DDBot {
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     ForwardDDBot();  // allow the user to directly set the arrays or the default PWM values
-    ForwardDDBot(uint8_t maxPWM, float adjustment);
-    ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]);
-    ForwardDDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS], uint8_t maxPWM, float adjustment);
+    ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn);
+    ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]);
+    ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS], uint8_t maxPWMIn, float adjustmentIn);
 
     void init();
     void calculateAdjustedPWM();

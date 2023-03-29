@@ -30,9 +30,9 @@ class DDBot {
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     DDBot();  // allow the user to directly set the arrays
-    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS]);
-    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPins[NUMBER_OF_PWM_PINS]);
-    DDBot(uint8_t directionPins[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPin);
+    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS]);
+    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]);
+    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn);
 
     void setPinModes();
 
