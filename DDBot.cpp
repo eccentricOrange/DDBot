@@ -2,9 +2,6 @@
 
 #include <Arduino.h>
 
-#ifndef DDBot_cpp
-#define DDBot_cpp
-
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
 
@@ -247,5 +244,4 @@ void ForwardDDBot::write() {
     analogWrite(PWMPins[0], leftActualPWM);
     analogWrite(PWMPins[1], rightActualPWM);
 }
-
 #endif  // DDBot_cpp

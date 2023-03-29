@@ -121,17 +121,5 @@ class ForwardDDBot : public DDBot {
     void init();
     void calculateAdjustedPWM();
 
-    void left();
-    void centre();
-    void right();
-    void stop();
-
-    // recall that rotations and moving backwards are not possible with this type of robot
-    // so these methods are not implemented
-
-    void write();
-
-    ~ForwardDDBot();
-};
 
 #endif  // DDBot_h
