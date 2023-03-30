@@ -21,11 +21,11 @@
    control is achieved by varying the speed of each motor instead. This allows for smoother turns
    and will (hopefully) help the robot to stay on its line more reliably.
 
-    The main loop should be structured to use feedback control. To use this library, the user should
-   call the method of the appropriate direction when they want, and call the `write()` method once
-   per loop. This will update the speed of each motor to come closer to the target speed. This is
-   done to avoid sudden changes in speed. A delay might have to be added to the main loop to allow
-   the changes to propagate.
+    The main loop should be structured to use open-loop control. To use this library, the user
+   should call the method of the appropriate direction when they want, and call the `write()`
+   method once per loop. This will update the speed of each motor to come closer to the target
+   speed. This is done to avoid sudden changes in speed. A delay might have to be added to the main
+   loop to allow the changes to propagate.
 */
 
 class ForwardDDBot : public DDBot {
