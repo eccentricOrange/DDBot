@@ -57,7 +57,7 @@ void setup() {
         Serial.print(", Adjusted PWM: ");
         Serial.println(bot.maxPWM * bot.adjustment);
 
-        // we need to update the PWM values to allow the feedback loop to work
+        // we need to update the PWM values to allow the open-loop control to work
         // we do this by calling the write() method 300 times, with a 10 ms delay between each call,
         // which is a total of 3 seconds
         for (int i = 0; i < 300; i++) {
@@ -85,7 +85,7 @@ void setup() {
         Serial.print(", Adjusted PWM: ");
         Serial.println(bot.maxPWM * bot.adjustment);
 
-        // again, we need to update the PWM values to allow the feedback loop to work
+        // again, we need to update the PWM values to allow the open-loop control to work
         // so 300 iterations * 10 ms per iteration = 3 seconds
         for (int i = 0; i < 300; i++) {
             delay(10);
