@@ -1,4 +1,5 @@
 #include "ForwardDDBot.h"
+
 #include <Arduino.h>
 
 ForwardDDBot::ForwardDDBot() {}
@@ -9,7 +10,10 @@ ForwardDDBot::ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn) {
     adjustment = adjustmentIn;
 }
 
-ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]) {
+ForwardDDBot::ForwardDDBot(
+    uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
+    uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]
+) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         directionPins[i] = directionPinsIn[i];
     }
@@ -17,7 +21,12 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], ui
         PWMPins[i] = PWMPinsIn[i];
     }
 }
-ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS], uint8_t maxPWMIn, float adjustmentIn) {
+
+ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
+    uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS],
+    uint8_t maxPWMIn,
+    float adjustmentIn
+) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         directionPins[i] = directionPinsIn[i];
     }
