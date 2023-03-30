@@ -1,10 +1,14 @@
 #include "DDBot.h"
+
 #include <Arduino.h>
 
 DDBot::DDBot() {}
 DDBot::~DDBot() {}
 
-DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]) {
+DDBot::DDBot(
+    uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
+    uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]
+) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         directionPins[i] = directionPinsIn[i];
     }
@@ -13,7 +17,10 @@ DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsI
     }
 }
 
-DDBot::DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn) {
+DDBot::DDBot(
+    uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
+    uint8_t PWMPinIn
+) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         directionPins[i] = directionPinsIn[i];
     }
@@ -57,14 +64,25 @@ void DDBot::setSpeed(uint8_t leftSpeed, uint8_t rightSpeed) {
     analogWrite(PWMPins[1], rightSpeed * speedFactor);
 }
 
-void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForward, bool rightBackward) {
+void DDBot::writeDirections(
+    bool leftForward,
+    bool leftBackward,
+    bool rightForward,
+    bool rightBackward
+) {
     digitalWrite(directionPins[0], leftForward);
     digitalWrite(directionPins[1], leftBackward);
     digitalWrite(directionPins[2], rightForward);
     digitalWrite(directionPins[3], rightBackward);
 }
 
-void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForward, bool rightBackward, uint8_t speed) {
+void DDBot::writeDirections(
+    bool leftForward,
+    bool leftBackward,
+    bool rightForward,
+    bool rightBackward,
+    uint8_t speed
+) {
     digitalWrite(directionPins[0], leftForward);
     digitalWrite(directionPins[1], leftBackward);
     digitalWrite(directionPins[2], rightForward);
@@ -72,7 +90,14 @@ void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForwa
     setSpeed(speed);
 }
 
-void DDBot::writeDirections(bool leftForward, bool leftBackward, bool rightForward, bool rightBackward, uint8_t leftSpeed, uint8_t rightSpeed) {
+void DDBot::writeDirections(
+    bool leftForward,
+    bool leftBackward,
+    bool rightForward,
+    bool rightBackward,
+    uint8_t leftSpeed,
+    uint8_t rightSpeed
+) {
     digitalWrite(directionPins[0], leftForward);
     digitalWrite(directionPins[1], leftBackward);
     digitalWrite(directionPins[2], rightForward);

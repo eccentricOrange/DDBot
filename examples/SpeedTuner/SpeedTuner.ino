@@ -1,16 +1,16 @@
 /* SpeedTuner
-    This example shows how to use the DDBot library to figure out the right values for tuning
-    PWM parameters for use with the Forward-biased Differential Drive robot.
+    This example shows how to use the DDBot library to figure out the right values for tuning PWM
+   parameters for use with the Forward-biased Differential Drive robot.
 
-    The robot will start with 0 adjustment. It will then increase the adjustment by
-    0.05, attempt to forward for 3 seconds, and then increase the adjustment by 0.05 again.
-    This process repeats until the adjustment is 1.0, at which point the robot will stop.
+    The robot will start with 0 adjustment. It will then increase the adjustment by 0.05, attempt to
+   forward for 3 seconds, and then increase the adjustment by 0.05 again. This process repeats until
+   the adjustment is 1.0, at which point the robot will stop.
 
-    It will then repeat the process while going backwards, increasing the adjustment from 0 to
-    1.0 in 0.05 increments.
+    It will then repeat the process while going backwards, increasing the adjustment from 0 to 1.0
+   in 0.05 increments.
 
     At each stage, it will output the adjustment value and the adjusted PWM to the Serial monitor,
-    so that you can determine when it has sufficient PWM to accelerate.
+   so that you can determine when it has sufficient PWM to accelerate.
 
     The circuit:
     * Pin 2 to left motor forward

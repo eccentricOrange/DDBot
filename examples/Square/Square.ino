@@ -1,7 +1,8 @@
 /* Square
     This example shows how to use the DDBot library to make the robot move in a square.
 
-    The robot will move forward for 2 seconds, then turn right for 1 second, then move forward for 2 seconds, then turn right for 1 second, and so on.
+    The robot will move forward for 2 seconds, then turn right for 1 second, then move forward for 2
+   seconds, then turn right for 1 second, and so on.
 
     The circuit:
     * Pin 2 to left motor forward
