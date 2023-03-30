@@ -14,11 +14,11 @@
 class DDBot {
    private:
    public:
-    static const uint8_t NUMBER_OF_DIRECTION_PINS = 4;
-    static const uint8_t NUMBER_OF_PWM_PINS = 2;
+    static constexpr uint8_t NUMBER_OF_DIRECTION_PINS = 4;
+    static constexpr uint8_t NUMBER_OF_PWM_PINS = 2;
 
     // factor used to scale the speed of the motors from 0-100 to 0-255
-    static const float speedFactor = 2.55;
+    static constexpr float speedFactor = 2.55;
 
     // the sequence of pins is important, and is used throughout the library
     // the first two pins are for the left motor, and the second two are for the right motor
@@ -33,9 +33,8 @@ class DDBot {
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class properties
     DDBot();  // allow the user to directly set the arrays
-    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS]);
     DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]);
-    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn);
+    DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn = 0);
 
     void setPinModes();
 
