@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#ifndef DDBot_h
+#if !defined(DDBot_h)
 #define DDBot_h
 
 /* Differential Drive Bot
