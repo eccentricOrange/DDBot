@@ -1,5 +1,7 @@
 # Differential Drive Robot
 
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/eccentricorange/library/DDBot.svg)](https://registry.platformio.org/libraries/eccentricorange/DDBot)
+
 This library provides an interface to easily control a [differential wheeled robot](https://en.wikipedia.org/wiki/Differential_wheeled_robot) using an Arduino-compatible microcontroller.
 
 The expectation is that you have an even number of motors, with one half on either side of a structure that looks like a rover or a car. You then control the direction the robot moves in by controlling which motors turn on and in which direction. For example, if the left motors spin forward and the right motors spin backwards, the robot will rotate clockwise.
