@@ -1,10 +1,3 @@
-#include <Arduino.h>
-
-#include "DDBot.h"
-
-#if !defined(ForwardDDBot_h)
-#define ForwardDDBot_h
-
 /* Forward Differential Drive Bot
     This is a **differential wheeled robot** with a forward bias, and direction is set by varying
    just the speed of each motor. So while the classic differential drive bot can use the same
@@ -27,6 +20,13 @@
    speed. This is done to avoid sudden changes in speed. A delay might have to be added to the main
    loop to allow the changes to propagate.
 */
+
+#if !defined(ForwardDDBot_h)
+#define ForwardDDBot_h
+
+#include <Arduino.h>
+
+#include "DDBot.h"
 
 class ForwardDDBot : public DDBot {
    private:

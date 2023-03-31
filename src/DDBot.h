@@ -1,8 +1,3 @@
-#include <Arduino.h>
-
-#if !defined(DDBot_h)
-#define DDBot_h
-
 /* Differential Drive Bot
     This is a conventional **differential wheeled robot**, and direction is set by varying which
    motors spin and in which direction.
@@ -11,6 +6,11 @@
    this library just involves the user calling the method of the appropriate direction and/or speed
    in their main loop.
 */
+
+#if !defined(DDBot_h)
+#define DDBot_h
+
+#include <Arduino.h>
 
 class DDBot {
    private:
