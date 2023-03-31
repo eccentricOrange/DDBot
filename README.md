@@ -54,7 +54,7 @@ There are classes for two kinds of robots included in this library.
     The class for this is `ForwardDDBot`.
 
 ## Standard Differential Drive Robot
-1.  The first step for using this library is to create an instance of the `DDBot` class.
+1.  The first step for using this library is to include the `DDBot.h` header file and create an instance of the `DDBot` class.
 
     In doing so, you can communicate to the library which pins you'll use for the motors.
 
@@ -74,6 +74,8 @@ There are classes for two kinds of robots included in this library.
     The easiest way to set these pins is to pass them as an array to the constructor. For example, if you want to use pins 2, 3, 4, and 5 for the direction pins, and pins 10 and 11 for the speed pins, you can do the following:
 
     ```cpp
+    #include <DDBot.h>
+
     uint8_t directionPins[4] = {2, 3, 4, 5};
     uint8_t speedPins[2] = {10, 11};
 
@@ -83,6 +85,8 @@ There are classes for two kinds of robots included in this library.
     You can also set the pin arrays after creating the instance. For example, if you want to use pins 2, 3, 4, and 5 for the direction pins, and pins 10 and 11 for the speed pins, you can do the following:
 
     ```cpp
+    #include <DDBot.h>
+
     DDBot bot();
 
     uint8_t directionPins[4] = {2, 3, 4, 5};
@@ -161,7 +165,7 @@ One of the key concepts behind this type of robot is that it relies on open-loop
 
 So, when you call a direction method, it just sets two variables internally. You must then call another method in each iteration of your `loop()` function to update the actual values being written to the robot.
 
-1.  The first step for using this library is to create an instance of the `ForwardDDBot` class.
+1.  The first step for using this library is to include the `ForwardDDBot.h` header file and create an instance of the `ForwardDDBot` class.
 
     Just like the `DDBot` class, you can pass in the direction and speed pins to the constructor. However, the `ForwardDDBot` class has a two additional arguments.
     
@@ -178,6 +182,8 @@ So, when you call a direction method, it just sets two variables internally. You
     You set the direction and speed pins just like you would with the `DDBot` class. A similar philosophy is used for the additional `maxPWM` and `adjustment` arguments.
 
     ```cpp
+    #include <ForwardDDBot.h>
+    
     uint8_t directionPins[4] = {2, 3, 4, 5};
     uint8_t speedPins[2] = {10, 11};
 
