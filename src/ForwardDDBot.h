@@ -32,25 +32,25 @@ class ForwardDDBot : public DDBot {
    private:
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
-    // this will be calculated in the init() method by multiplying the maxPWM by the adjustment
+    // this will be calculated in the init() method by multiplying the maxSpeed by the adjustment
     // factor
-    uint8_t _adjustedPWM;
+    uint8_t _adjustedSpeed;
 
     // "actual" values are written to a motor during a given call of the write() method
     // "target" values are the values that the user wants to write to a motor
     // in each call of the write() method, the actual values are adjusted to come closer to the
     // target values
-    uint8_t rightTargetPWM, leftTargetPWM;
-    uint16_t rightActualPWM, leftActualPWM;  // 16-bit to avoid overflow in the `write()` method
+    uint8_t rightTargetSpeed, leftTargetSpeed;
+    uint16_t rightActualSpeed, leftActualSpeed;  // 16-bit to avoid overflow in the `write()` method
 
    public:
-    uint8_t maxPWM;    // maximum "speed" for each motor
+    uint8_t maxSpeed;    // maximum "speed" for each motor
     float adjustment;  // scaling factor used when slowing down a given motor
 
     // the constructors are responsible for setting the pin numbers from the arguments to the class
     // properties
-    ForwardDDBot();  // allow the user to directly set the arrays or the default PWM values
-    ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn);
+    ForwardDDBot();  // allow the user to directly set the arrays or the default PWM pin values
+    ForwardDDBot(uint8_t maxSpeedIn, float adjustmentIn);
     ForwardDDBot(
         uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
         uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]
@@ -58,12 +58,12 @@ class ForwardDDBot : public DDBot {
     ForwardDDBot(
         uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
         uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS],
-        uint8_t maxPWMIn,
+        uint8_t maxSpeedIn,
         float adjustmentIn
     );
 
     void init();
-    void calculateAdjustedPWM();
+    void calculateAdjustedSpeed();
 
     void left();
     void centre();
