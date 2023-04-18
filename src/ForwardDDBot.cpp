@@ -5,8 +5,8 @@
 ForwardDDBot::ForwardDDBot() {}
 ForwardDDBot::~ForwardDDBot() {}
 
-ForwardDDBot::ForwardDDBot(uint8_t maxPWMIn, float adjustmentIn) {
-    maxPWM = maxPWMIn;
+ForwardDDBot::ForwardDDBot(uint8_t maxSpeedIn, float adjustmentIn) {
+    maxSpeed = maxSpeedIn;
     adjustment = adjustmentIn;
 }
 
@@ -24,7 +24,7 @@ ForwardDDBot::ForwardDDBot(
 
 ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
     uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS],
-    uint8_t maxPWMIn,
+    uint8_t maxSpeedIn,
     float adjustmentIn
 ) {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
@@ -34,25 +34,25 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
         PWMPins[i] = PWMPinsIn[i];
     }
 
-    maxPWM = maxPWMIn;
+    maxSpeed = maxSpeedIn;
     adjustment = adjustmentIn;
 }
 
-void ForwardDDBot::calculateAdjustedPWM() {
+void ForwardDDBot::calculateAdjustedSpeed() {
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
-    _adjustedPWM = maxPWM * adjustment;
+    _adjustedSpeed = maxSpeed * adjustment;
 }
 
 void ForwardDDBot::init() {
     setPinModes();
-    calculateAdjustedPWM();
+    calculateAdjustedSpeed();
 
-    leftActualPWM = maxPWM;
-    rightActualPWM = maxPWM;
+    leftActualSpeed = maxSpeed;
+    rightActualSpeed = maxSpeed;
 
     // set the robot to perpetually move forward
-    forward(leftActualPWM, rightActualPWM);
+    forward(leftActualSpeed, rightActualSpeed);
 }
 
 // the following methods set the direction of the robot by controlling which
@@ -60,33 +60,32 @@ void ForwardDDBot::init() {
 // the logic here is the same as in the conventional differential drive robot
 // and you can figure it out the same way
 void ForwardDDBot::left() {
-    leftTargetPWM = _adjustedPWM;
-    rightTargetPWM = maxPWM;
+    leftTargetSpeed = _adjustedSpeed;
+    rightTargetSpeed = maxSpeed;
 }
 
 void ForwardDDBot::right() {
-    leftTargetPWM = maxPWM;
-    rightTargetPWM = _adjustedPWM;
+    leftTargetSpeed = maxSpeed;
+    rightTargetSpeed = _adjustedSpeed;
 }
 
 void ForwardDDBot::centre() {
-    leftTargetPWM = maxPWM;
-    rightTargetPWM = maxPWM;
+    leftTargetSpeed = maxSpeed;
+    rightTargetSpeed = maxSpeed;
 }
 
 void ForwardDDBot::stop() {
-    leftTargetPWM = 0;
-    rightTargetPWM = 0;
+    leftTargetSpeed = 0;
+    rightTargetSpeed = 0;
 }
 
 void ForwardDDBot::write() {
-    // update "actual" PWM values so that they get closer to the "target" values
+    // update "actual" speed values so that they get closer to the "target" values
     // this will eventually get the values to equal, as exponential decay (but
     // with integer division)
-    leftActualPWM = (leftTargetPWM + leftActualPWM) / 2;
-    rightActualPWM = (rightTargetPWM + rightActualPWM) / 2;
+    leftActualSpeed = (leftTargetSpeed + leftActualSpeed) / 2;
+    rightActualSpeed = (rightTargetSpeed + rightActualSpeed) / 2;
 
-    // write the actual PWM values to the motor driver
-    analogWrite(PWMPins[0], leftActualPWM);
-    analogWrite(PWMPins[1], rightActualPWM);
+    // write the actual speed values to the motor driver
+    setSpeed(leftActualSpeed, rightActualSpeed);
 }

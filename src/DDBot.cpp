@@ -46,16 +46,16 @@ void DDBot::setPinModes() {
 
 void DDBot::setSpeed(uint8_t speed) {
     // scale from the user-friendly 0-100 range to the 0-255 range
-    speed = speed * speedFactor;
+    const uint8_t PWM = speed * SPEED_FACTOR;
 
     // do not set speed for PWM pin(s) if they are not set (i.e. if they are 0)
     if (PWMPins[0] != 0 && PWMPins[1] != 0) {
-        analogWrite(PWMPins[0], speed);
-        analogWrite(PWMPins[1], speed);
+        analogWrite(PWMPins[0], PWM);
+        analogWrite(PWMPins[1], PWM);
     }
 
     if (PWMPin != 0) {
-        analogWrite(PWMPin, speed);
+        analogWrite(PWMPin, PWM);
     }
 }
 
@@ -64,8 +64,8 @@ void DDBot::setSpeed(uint8_t leftSpeed, uint8_t rightSpeed) {
     if (PWMPins[0] != 0 && PWMPins[1] != 0) {
         
         // scale from the user-friendly 0-100 range to the 0-255 range
-        analogWrite(PWMPins[0], leftSpeed * speedFactor);
-        analogWrite(PWMPins[1], rightSpeed * speedFactor);
+        analogWrite(PWMPins[0], leftSpeed * SPEED_FACTOR);
+        analogWrite(PWMPins[1], rightSpeed * SPEED_FACTOR);
     }
 }
 

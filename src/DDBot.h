@@ -19,7 +19,7 @@ class DDBot {
     static constexpr uint8_t NUMBER_OF_PWM_PINS = 2;
 
     // factor used to scale the speed of the motors from 0-100 to 0-255
-    static constexpr float speedFactor = 2.55;
+    static constexpr float SPEED_FACTOR = 2.55;
 
     // the sequence of pins is important, and is used throughout the library
     // the first two pins are for the left motor, and the second two are for the
@@ -92,7 +92,7 @@ class DDBot {
     void counterClockwise(uint8_t speed);
     void counterClockwise(uint8_t leftSpeed, uint8_t rightSpeed);
 
-    // it doesn't make sense to specify a PWM variant of a stop command
+    // it doesn't make sense to specify a speed variant of a stop command
     void stop();
 
     ~DDBot();

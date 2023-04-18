@@ -173,15 +173,15 @@ So, when you call a direction method, it just sets two variables internally. You
     
     **These additional arguments and the `PWMPins` argument are both compulsory.**
 
-    *  **maxPWM**
+    *  **maxSpeed**
         
-        This sets the maximum PWM value that will be written to the motors. This is useful if you want to limit the maximum speed of the robot. This value must be between 0 and 100.
+        This sets the maximum speed value that will be written to the motors. This is useful if you want to limit the maximum speed of the robot. This value must be between 0 and 100.
 
     *   **adjustment**
 
-        This is a value between 0 and 1 that will be multiplied by the PWM value to produce a "slow" PWM value. This is used to steer the robot without setting any motor to 0 and thus not stopping the robot.
+        This is a value between 0 and 1 that will be multiplied by the speed value to produce a "slow" speed value. This is used to steer the robot without setting any motor to 0 and thus not stopping the robot.
 
-    You set the direction and speed pins just like you would with the `DDBot` class. A similar philosophy is used for the additional `maxPWM` and `adjustment` arguments.
+    You set the direction and speed pins just like you would with the `DDBot` class. A similar philosophy is used for the additional `maxSpeed` and `adjustment` arguments.
 
     ```cpp
     #include <ForwardDDBot.h>
@@ -192,13 +192,13 @@ So, when you call a direction method, it just sets two variables internally. You
     ForwardDDBot bot(directionPins, speedPins, 100, 0.5);
     ```
 
-    **You should always call the `calculateAdjustedPWM()` method after you set the `adjustment` or `maxPWM` values, after calling the `init()` method.**
+    **You should always call the `calculateAdjustedSpeed()` method after you set the `adjustment` or `maxSpeed` values, after calling the `init()` method.**
 
 2.  Now that you've created an instance of the `ForwardDDBot` class, you can set the pin modes and the initial speed and direction. This is done by calling the `init()` method. This method takes no arguments and returns nothing.
 
     This method must be called before you can use the direction and speed methods.
 
-    This method would set the pin modes, set the "slow" PWM value, and set the direction to forward. It also initializes the motors to full speed, to help with the initial acceleration.
+    This method would set the pin modes, set the "slow" speed value, and set the direction to forward. It also initializes the motors to full speed, to help with the initial acceleration.
 
     ```cpp
     void setup() {
