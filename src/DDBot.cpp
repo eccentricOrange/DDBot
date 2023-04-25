@@ -3,7 +3,6 @@
 #include <Arduino.h>
 
 DDBot::DDBot() {}
-DDBot::~DDBot() {}
 
 DDBot::DDBot(
     uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],

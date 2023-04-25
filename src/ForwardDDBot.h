@@ -75,7 +75,7 @@ class ForwardDDBot : public DDBot {
 
     void write();
 
-    ~ForwardDDBot();
+    ~ForwardDDBot() = default;
 };
 
 #endif  // ForwardDDBot_h
