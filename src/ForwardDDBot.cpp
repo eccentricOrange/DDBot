@@ -3,7 +3,6 @@
 #include <Arduino.h>
 
 ForwardDDBot::ForwardDDBot() {}
-ForwardDDBot::~ForwardDDBot() {}
 
 ForwardDDBot::ForwardDDBot(uint8_t maxSpeedIn, float adjustmentIn) {
     maxSpeed = maxSpeedIn;

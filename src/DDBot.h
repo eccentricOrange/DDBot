@@ -95,7 +95,7 @@ class DDBot {
     // it doesn't make sense to specify a speed variant of a stop command
     void stop();
 
-    ~DDBot();
+    ~DDBot() = default;
 };
 
 #endif  // DDBot_h
