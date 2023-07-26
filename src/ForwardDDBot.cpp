@@ -37,6 +37,43 @@ ForwardDDBot::ForwardDDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS],
     adjustment = adjustmentIn;
 }
 
+ForwardDDBot::ForwardDDBot(
+    uint8_t leftForwardPin,
+    uint8_t leftBackwardPin,
+    uint8_t rightForwardPin,
+    uint8_t rightBackwardPin,
+    uint8_t leftPWMPin,
+    uint8_t rightPWMPin
+) {
+    directionPins[0] = leftForwardPin;
+    directionPins[1] = leftBackwardPin;
+    directionPins[2] = rightForwardPin;
+    directionPins[3] = rightBackwardPin;
+    PWMPins[0] = leftPWMPin;
+    PWMPins[1] = rightPWMPin;
+}
+
+ForwardDDBot::ForwardDDBot(
+    uint8_t leftForwardPin,
+    uint8_t leftBackwardPin,
+    uint8_t rightForwardPin,
+    uint8_t rightBackwardPin,
+    uint8_t leftPWMPin,
+    uint8_t rightPWMPin,
+    uint8_t maxSpeedIn,
+    float adjustmentIn
+) {
+    directionPins[0] = leftForwardPin;
+    directionPins[1] = leftBackwardPin;
+    directionPins[2] = rightForwardPin;
+    directionPins[3] = rightBackwardPin;
+    PWMPins[0] = leftPWMPin;
+    PWMPins[1] = rightPWMPin;
+
+    maxSpeed = maxSpeedIn;
+    adjustment = adjustmentIn;
+}
+
 void ForwardDDBot::calculateAdjustedSpeed() {
     // this is the value used to "slow down" a motor
     // it is used when we want to turn, but don't want to set the speed of the other motor to 0
