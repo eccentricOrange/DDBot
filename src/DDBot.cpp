@@ -26,6 +26,36 @@ DDBot::DDBot(
     PWMPin = PWMPinIn;
 }
 
+DDBot::DDBot(
+    uint8_t leftForwardPin,
+    uint8_t leftBackwardPin,
+    uint8_t rightForwardPin,
+    uint8_t rightBackwardPin,
+    uint8_t leftPWMPin,
+    uint8_t rightPWMPin
+) {
+    directionPins[0] = leftForwardPin;
+    directionPins[1] = leftBackwardPin;
+    directionPins[2] = rightForwardPin;
+    directionPins[3] = rightBackwardPin;
+    PWMPins[0] = leftPWMPin;
+    PWMPins[1] = rightPWMPin;
+}
+
+DDBot::DDBot(
+    uint8_t leftForwardPin,
+    uint8_t leftBackwardPin,
+    uint8_t rightForwardPin,
+    uint8_t rightBackwardPin,
+    uint8_t PWMPinIn
+) {
+    directionPins[0] = leftForwardPin;
+    directionPins[1] = leftBackwardPin;
+    directionPins[2] = rightForwardPin;
+    directionPins[3] = rightBackwardPin;
+    PWMPin = PWMPinIn;
+}
+
 void DDBot::setPinModes() {
     for (size_t i = 0; i < NUMBER_OF_DIRECTION_PINS; i++) {
         pinMode(directionPins[i], OUTPUT);

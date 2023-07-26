@@ -61,6 +61,24 @@ class ForwardDDBot : public DDBot {
         uint8_t maxSpeedIn,
         float adjustmentIn
     );
+    ForwardDDBot(
+        uint8_t leftForwardPin,
+        uint8_t leftBackwardPin,
+        uint8_t rightForwardPin,
+        uint8_t rightBackwardPin,
+        uint8_t leftPWMPin,
+        uint8_t rightPWMPin
+    );
+    ForwardDDBot(
+        uint8_t leftForwardPin,
+        uint8_t leftBackwardPin,
+        uint8_t rightForwardPin,
+        uint8_t rightBackwardPin,
+        uint8_t leftPWMPin,
+        uint8_t rightPWMPin,
+        uint8_t maxSpeedIn,
+        float adjustmentIn
+    );
 
     void init();
     void calculateAdjustedSpeed();

@@ -39,6 +39,21 @@ class DDBot {
     DDBot();  // allow the user to directly set the arrays
     DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinsIn[NUMBER_OF_PWM_PINS]);
     DDBot(uint8_t directionPinsIn[NUMBER_OF_DIRECTION_PINS], uint8_t PWMPinIn = 0);
+    DDBot(
+        uint8_t leftForwardPin,
+        uint8_t leftBackwardPin,
+        uint8_t rightForwardPin,
+        uint8_t rightBackwardPin,
+        uint8_t leftPWMPin,
+        uint8_t rightPWMPin
+    );
+    DDBot(
+        uint8_t leftForwardPin,
+        uint8_t leftBackwardPin,
+        uint8_t rightForwardPin,
+        uint8_t rightBackwardPin,
+        uint8_t PWMPinIn = 0
+    );
 
     void setPinModes();
 
